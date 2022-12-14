@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-3 mb-3">
+    <div class="mb-3">
+        <h1 class="mb-0">Register</h1>
+        <a href="{% url 'login' %}">Login</a>
+    </div>
+    <form action="post">
+        <div></div>
+        {% csrf_token %}
+        {% include 'parciais/_messages.html' %}
+        <table class="table">
+        {{ form }}
+        </table>
+    </form>
+</div>
+{% endblock content %}
