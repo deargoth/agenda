@@ -1,18 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+
+{% if not request.user.is_authenticated %}   
+
 <div class="container mt-3 mb-3">
     <div class="mb-3">
         <h1 class="mb-0">Login</h1>
-        <a href="{% url 'register' %}">Register</a>
+        <p>Doesn't have an account yet? <a href="{% url 'register' %}"> <b>Register</b> </a></p>
     </div>
-    <form action="post">
-        <div></div>
+    <form method="POST" action="{% url 'login' %}">
         {% csrf_token %}
         {% include 'parciais/_messages.html' %}
-        <table class="table">
-        {{ form }}
-        </table>
+            
+        {% for visible_field in form.visible_fields %}
+        <div class="form-group">
+            {{ visible_field.label_tag }} <br>
+            {{ visible_field }}
+            <hr>
+        </div>
+        {% endfor %}
+
+        <input type="submit" value="Login" class="btn btn-dark">
+            
     </form>
 </div>
+
+{% else %}
+    <div class="text-center mt-3 mb-3">
+        <h1 class="mb-0">Você já está logado!!</h1>
+        <a href="{% url 'agenda_index' %}">Página inicial</a>
+    </div>
+
+{% endif %}
+
+
 {% endblock content %}

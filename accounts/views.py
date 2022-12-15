@@ -5,12 +5,15 @@ from django.contrib.auth.views import LoginView
 from .forms import RegisterForm, LoginForm
 
 
-class Login(LoginView):
-    template_name = 'accounts/login.html'
-    form_class = LoginForm
-
-
 class Register(CreateView):
     template_name = 'accounts/register.html'
-    model = User
     form_class = RegisterForm
+    success_url = '/accounts/login/'
+
+
+class Login(LoginView):
+    template_name = 'accounts/login.html'
+    authentication_form = LoginForm
+    next_page = '/'
+
+
