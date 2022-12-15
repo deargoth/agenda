@@ -16,4 +16,6 @@ class Login(LoginView):
     authentication_form = LoginForm
     next_page = '/'
 
+class Dashboard(CreateView):
+    pass
 
