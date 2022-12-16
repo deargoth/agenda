@@ -7,3 +7,7 @@ class Index(ListView):
     model = Contato
     template_name = 'contatos/index.html'
     context_object_name = 'contato'
+    
+    def get_queryset(self):
+        qs = super().get_queryset()
+        # qs = qs.filter(author=)

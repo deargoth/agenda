@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="text-center mt-3 mb-3">
+    <h1>Olá {{user.first_name}}! Aqui você poderá criar seus contatos. </h1>
+    <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+</div>
+{% endblock content %}
+    

@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'AGENDA.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'new_agenda',
+        'NAME': 'agenda',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': '127.0.0.1',

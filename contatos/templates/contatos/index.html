@@ -51,7 +51,14 @@
     </div>
   </div>
 
-
+{% else %}
+  <div class="text-center mb-3 mt-3">
+    <h1 class="mb-0">Olá, usuário! Conecte-se para ver ou criar seus contatos.</h1>
+    <p>
+      Clique <a href="{% url 'register' %}"> <b>aqui</b> 
+      </a> para se registrar ou <a href="{% url 'login' %}"> <b>aqui</b> </a> para logar
+    </p>
+  </div>
 {% endif %}
 {% endblock content %}
     
