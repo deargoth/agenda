@@ -14,19 +14,24 @@
         {% include 'parciais/_messages.html' %}
         {% csrf_token %}
 
-        
-        {{ form.errors }}            
-        
-        {% for error in form.errors %}
-            {{ error }}
-        {% endfor %}
-            
-        
+
         {% for visible_field in form.visible_fields %}
         <div class="fieldWrapper">
+            
+            
             {{ visible_field.label_tag }} <br>
             {{ visible_field }} <br>
             {{ visible_field.help_text }}
+            
+            {% if visible_field.errors %}
+                <div class="alert alert-danger mt-3 mb-3">
+                    {% for error in visible_field.errors %}
+                        {{ error }} <br>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            
+
             <hr>
         </div>
         {% endfor %}

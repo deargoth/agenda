@@ -13,11 +13,23 @@
     <form method="POST" action="{% url 'login' %}">
         {% csrf_token %}
         {% include 'parciais/_messages.html' %}
-            
+        
+        
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+            <div class="alert alert-danger">
+                {{ error }}            
+            </div>
+            {% endfor %}
+        {% endif %}
+        
+
+
         {% for visible_field in form.visible_fields %}
         <div class="form-group">
             {{ visible_field.label_tag }} <br>
             {{ visible_field }}
+            {{ visible_field.errors }}
             <hr>
         </div>
         {% endfor %}
