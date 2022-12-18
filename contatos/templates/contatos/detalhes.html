@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+      <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="mt-5">{{ contato.name }} {{ contato.surname }}</h1>
+        <dl>
+          <dt>ID</dt>
+          <dd>{{ contato.id }}</dd>
+
+          <dt>Telefone</dt>
+          <dd>{{ contato.phone }}</dd>
+
+          <dt>E-mail</dt>
+          <dd>{{ contato.email }}</dd>
+
+          <dt>Data criação</dt>
+          <dd>{{ contato.date_creation }}</dd>
+
+          <dt>Categoria</dt>
+          <dd>{{ contato.category }}</dd>
+
+          <dt>Descrição</dt>
+          <dd>
+            {{ contato.description }}
+          </dd>
+        </dl>
+
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+    

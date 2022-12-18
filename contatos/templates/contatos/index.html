@@ -32,7 +32,7 @@
       <tbody>
         <tr>
           <td>
-            <a href="#">{{ contato.name }}</a>
+            <a href="{% url 'detalhes' contato.id %}">{{ contato.name }}</a>
           </td>
           <td>{{ contato.surname }}</td>
           <td>{{ contato.phone }}</td>
