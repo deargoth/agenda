@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
+from django.views.generic.edit import UpdateView
 from .models import Contato
 from django.views.generic.base import TemplateView
+from .forms import EditingForm
 
 
 class Index(ListView):
@@ -11,6 +13,7 @@ class Index(ListView):
     
     def get_queryset(self):
         qs = super().get_queryset()
+        qs = qs.filter(show=True)
 
         if self.request.user.is_authenticated:
             qs = qs.filter(contact_creator=self.request.user)
@@ -26,4 +29,9 @@ class Detalhes(TemplateView):
         context['contato'] = Contato.objects.get(id=pk)
 
         return context
-
+    
+class Editing(UpdateView):
+    model = Contato
+    template_name = 'contatos/editing.html'
+    form_class = EditingForm
+    success_url = '/'

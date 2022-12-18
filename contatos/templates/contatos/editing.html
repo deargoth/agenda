@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container">
+    <div class="mb-3 mt-3">
+        <h1>Editando contato {{ contato.name }} {{ contato.surname }} </h1>
+        
+        <form method="POST" action="{% url 'edit' contato.id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {% for visible_field in form.visible_fields %}
+            <div class="form-group">
+                {{ visible_field.label_tag }} <br>
+                {{ visible_field }}
+            </div>
+            {% endfor %}
+
+            <input class="btn btn-success" type="submit" value="Editar">
+            <a class="btn btn-danger" href="{% url 'detalhes' contato.id %}">Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock content %}
+    
