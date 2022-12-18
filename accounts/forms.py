@@ -45,3 +45,4 @@ class CreateContact(forms.ModelForm):
     class Meta:
         model = Contato
         fields = '__all__'
+        exclude = ('contact_creator', 'creation_date', )

@@ -4,7 +4,15 @@
 {% block content %}
 <div class="text-center mt-3 mb-3">
     <h1>Olá {{user.first_name}}! Aqui você poderá criar seus contatos. </h1>
-    <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+
+    <form method="POST" action="{% url 'dashboard' %}">
+        {% csrf_token %}
+        {% include 'parciais/_messages.html' %}
+        <table class="table">
+            {{ form }}
+        </table>
+        <button type="submit" class="btn btn-dark">Enviar contato</button>
+        <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+    </form>
 </div>
 {% endblock content %}
-    
