@@ -1,37 +1,48 @@
 {% extends 'base.html' %}
-
+{% load indexfilters %}
 
 {% block content %}
 
 
 {% if request.user.is_authenticated %}  
 
-<h1 class="mt-5">Agenda de: {{ user.first_name }} </h1>
+ 
+  
+    {% if user|count_contacts == 0 %}
+    <div class="text-left mb-3 mt-3">
+      <h1 class="mb-0">{{ user.first_name }}, você ainda não tem nenhum contato.</h1>
+      <p>
+        Clique <a href="{% url 'dashboard' %}"> <b>aqui</b> 
+        </a> e crie seus contatos!</p>
+    </div>
+    
+    {% else %}
+    <h1 class="mt-5">Agenda de: {{ user.first_name }} </h1>
 
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Sobrenome</th>
-      <th>Telefone</th>
-      <th>Categoria</th>
-    </tr>
-  </thead>
-  {% for contato in contatos %}
-  <tbody>
-    <tr>
-      <td>
-        <a href="#">{{ contato.name }}</a>
-      </td>
-      <td>{{ contato.surname }}</td>
-      <td>{{ contato.phone }}</td>
-      <td>{{ contato.category }}</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Sobrenome</th>
+          <th>Telefone</th>
+          <th>Categoria</th>
+        </tr>
+      </thead>
+      {% for contato in contatos %}
+      <tbody>
+        <tr>
+          <td>
+            <a href="#">{{ contato.name }}</a>
+          </td>
+          <td>{{ contato.surname }}</td>
+          <td>{{ contato.phone }}</td>
+          <td>{{ contato.category }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+    
 {% else %}
   <div class="text-center mb-3 mt-3">
     <h1 class="mb-0">Olá, usuário! Conecte-se para ver ou criar seus contatos.</h1>
