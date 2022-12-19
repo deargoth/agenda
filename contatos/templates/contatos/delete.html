@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <div class="text-center mt-3 mb-3">
+        <form method="POST">
+            {% csrf_token %}
+            <h1>Tem certeza que deseja deletar o contato {{ contato.name }}?</h1>
+            <a href="{% url 'detalhes' contato.id %}" class="btn btn-success">Cancelar</a>
+            <input type="submit" class="btn btn-danger" value="Deletar">
+        </form>
+    </div>
+{% endblock content %}
+    

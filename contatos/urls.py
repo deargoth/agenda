@@ -6,4 +6,5 @@ urlpatterns = [
     path('detalhes/<int:pk>', views.Detalhes.as_view(), name="detalhes"),
     path('edit/<int:pk>', views.Editing.as_view(), name="edit"),
     path('busca/', views.Busca.as_view(), name="busca"),
+    path('delete/<int:pk>', views.DeleteContact.as_view(), name="delete"),
 ]

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import UpdateView, DeleteView
 from django.views.generic.base import TemplateView
 from django.db.models import Q, Value
 from django.db.models.functions import Concat
@@ -12,7 +12,7 @@ class Index(ListView):
     model = Contato
     template_name = 'contatos/index.html'
     context_object_name = 'contatos'
-    paginate_by = 3
+    paginate_by = 6
 
     def get_queryset(self):
         qs = super().get_queryset()
@@ -37,7 +37,7 @@ class Busca(Index):
         ).filter(
             Q(fullname__icontains=termo) |
             Q(phone__icontains=termo)
-        )
+        )  
         
         return qs
 
@@ -57,4 +57,9 @@ class Editing(UpdateView):
     model = Contato
     template_name = 'contatos/editing.html'
     form_class = EditingForm
+    success_url = '/'
+
+class DeleteContact(DeleteView):
+    model = Contato
+    template_name = 'contatos/delete.html'
     success_url = '/'
