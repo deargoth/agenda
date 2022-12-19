@@ -12,11 +12,18 @@
       <a class="btn btn-light" href="{% url 'login' %}">
         Login
       </a>
-
+      
       {% else %}
-      <a class="btn btn-light" href="{% url 'dashboard' %}">{{ user }}</a>
+      <div class="pull-right" style="display:flex;">
+        <a class="btn btn-light" href="{% url 'dashboard' %}">{{ user }}</a>
+        
+        <form class="form-inline my-2 my-lg-0 ml-lg-2" action="/busca/">
+          <input name="termo" value="{{ request.GET.termo }}" class="form-control mr-sm-2" type="search" placeholder="Pesquisar"
+          aria-label="Search">
+        </form>
+      </div>
       {% endif %}
-
+      
 
 
     </div>

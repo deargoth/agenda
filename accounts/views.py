@@ -34,5 +34,4 @@ class Dashboard(LoginRequiredMixin, CreateView):
         contato.contact_creator = self.request.user
 
         contato.save()
-        messages.success(self.request, 'Contato criado com sucesso!')
         return redirect('agenda_index')
